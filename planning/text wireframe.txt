@@ -1,0 +1,24 @@
+Wireframe of Oslash
+
+Menu Items
+	LookUp my wifi
+		google location lookup => lat long covering   5Miles by 5Miles
+		wigle ssid lookup => list of addresses/mac/channel2.4 & 5
+			least use 2.4 channels w/ basic EDU
+			least used 5 channels w/ basic EDU
+		"learn more on our EDU page" => EDU page
+	EDU
+		"What are wifi channels?"
+		"2.4ghz vs 5 ghz"
+		Wigle
+		Wifi jamers and of 1337 tools
+		Get more detailed info
+	Store?
+		What router do I but? => Wirecutter artical
+		high end => ubiqity 
+		tinfoil hat 
+	About ME
+		My info
+	
+	
+
