@@ -5,7 +5,7 @@ const express = require('express')
     ,Auth0Stratagy = require('passport-auth0')
     ,massive = require('massive')
     ,bodyParser = require('body-parser')
-    ,axios = require('axios')
+    ,location = require('./ctrl/location')
 
 const {
     SERVER_PORT,
@@ -82,5 +82,7 @@ app.get('/auth/user', (req,res)=>{
         ? res.status(200).send(req.user)
         : res.status(401).send('Not signed in')
 })
+
+app.get('/api/location', location.getLocataion)
 
 app.listen(SERVER_PORT, ()=>{console.log('Connected on port',SERVER_PORT)})
