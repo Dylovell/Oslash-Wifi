@@ -1,8 +1,14 @@
-const res= JSON.stringify(res)
+// const res= JSON.stringify(res)
+import res from './sampleData100'
 
-channelCounter = {}
+
+frequecy2GHz = {};
+frequecy5GHz = {};
+
 res.results.forEach(function(el) {
-    channelCounter[el.channel] = (channelCounter[el.channel] || 0) + 1
+    el.channel<15
+    ?frequecy2GHz[el.channel] = (frequecy2GHz[el.channel] || 0) +1
+    :frequecy5GHz[el.channel] = (frequecy5GHz[el.channel] || 0) +1
 })
 
-channelCounter
+allChannels = Object.assign({},frequecy2GHz,frequecy5GHz)

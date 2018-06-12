@@ -10,10 +10,12 @@ class User extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className='User'>
-                <p>USER THAT IS SINGED IN ={this.props.user.user_name}</p>
+                <p>USER</p>
+                <br/>
+                <img alt ='' src={this.props.user.picture} height='100px'/>
+                <p>USER THAT IS SINGED IN = {this.props.user.user_name}</p>
             </div> 
         )
     }

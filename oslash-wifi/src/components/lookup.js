@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
-export default class LookUp extends Component {
+class LookUp extends Component {
     render() {
+        console.log(this.props.user)
         return (
             <div className="Lookup">
                 <p>LOOK UPP BOII</p>
@@ -9,3 +11,11 @@ export default class LookUp extends Component {
         )
     }
 }
+
+function mapStateToProps(state){
+    return{
+        user: state.user,
+    }
+}
+
+export default connect(mapStateToProps,{})(LookUp);

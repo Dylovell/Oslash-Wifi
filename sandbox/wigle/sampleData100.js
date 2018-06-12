@@ -2707,4 +2707,3 @@ export default res = {
       "encryption": "wpa2"
     }
   ]
-}

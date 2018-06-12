@@ -5,6 +5,7 @@ const express = require('express')
     ,Auth0Stratagy = require('passport-auth0')
     ,massive = require('massive')
     ,bodyParser = require('body-parser')
+    ,axios = require('axios')
 
 const {
     SERVER_PORT,
@@ -65,17 +66,21 @@ passport.deserializeUser( (primaryKeyID,done)=>{
         }) 
 })
 
-
-app.get('/auth',passport.authenticate('auth0'));
+function check(req,res,next) {
+    if(req.user){res.redirect('http://localhost:3000/#/user')
+    } else {next()}
+}
+app.get('/auth', check, passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0',{
     successRedirect:'http://localhost:3000/#/user'
 }))
 app.get('/auth/logout', (req,res)=>{req.logOut();res.redirect('http://localhost:3000')})
 //on the frontend if you ever want to know anything about a user, hit this end point
+
 app.get('/auth/user', (req,res)=>{ 
     req.user
-        ?res.status(200).send(req.user)
-        :res.status(401).send('git ./out') 
+        ? res.status(200).send(req.user)
+        : res.status(401).send('Not signed in')
 })
 
 app.listen(SERVER_PORT, ()=>{console.log('Connected on port',SERVER_PORT)})
