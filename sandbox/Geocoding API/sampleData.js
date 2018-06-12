@@ -1,4 +1,4 @@
-{
+const res = {
 "results": [
     {
         "address_components": [

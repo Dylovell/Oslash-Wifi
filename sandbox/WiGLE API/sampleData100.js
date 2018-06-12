@@ -1,4 +1,4 @@
-export default res = {
+const res = {
   "success": true,
   "totalResults": 269,
   "search_after": 66706621,
@@ -2707,3 +2707,4 @@ export default res = {
       "encryption": "wpa2"
     }
   ]
+}
