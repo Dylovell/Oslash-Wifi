@@ -1,11 +1,14 @@
 import axios from 'axios'
 
 const initialState={
-    user:{}
+    user:{},
+    localChannelData:{},
+    location:'',
+    ssid:''
 }
 
 const GET_USER_DATA = 'GET_USER_DATA';
-// const GET_POSTS_DATA = 'GET_POSTS_DATA';
+const CHANNEL_QUERY  = 'CHANNEL_QUERY';
 
 export function getUser(){
     let userData = axios.get('/auth/user').then(res=>res.data);
@@ -15,20 +18,20 @@ export function getUser(){
     }
 }
 
-// export function getPosts(){
-//     let postsData = axios.get('/api/posts').then(res=>res.data);
-//     return {
-//         type: GET_POSTS_DATA,
-//         payload: postsData
-//     }
-// }
+export function channelQuery(){
+    let channelData = axios.post('/api/channelquery',()).then(res=>res.data);
+    return {
+        type: CHANNEL_QUERY,
+        payload: channelData
+    }
+}
 
 export default function reducer(state = initialState, action){
     switch (action.type) {
         case GET_USER_DATA + '_FULFILLED': 
             return Object.assign({}, state, {user: action.payload});
-        // case GET_POSTS_DATA + '_FULFILLED': 
-        //     return Object.assign({}, state, {posts: action.payload});
+        case CHANNEL_QUERY + '_FULFILLED': 
+            return Object.assign({}, state, {localChannelData: action.payload});
         default:
             return state;
     }

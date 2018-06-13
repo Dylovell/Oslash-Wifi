@@ -16,7 +16,7 @@ VALUES
 frequencys will be listed as ('2.4GHz','5GHz nonDFS','5GHz DFS')
 
 
-2.4GHz channels: 1-11(North America) +12,13(world) +14(japan 11b)
+2.4GHz channels: 1-11(North America) +12,13(world) +14(japan aka 11b(actually SpredSpectrum))
     recomend 1,6,11 beacuse all others overlap(see https://en.wikipedia.org/wiki/List_of_WLAN_channels)
 
 5GHz(North America)

@@ -1,4 +1,5 @@
-const res = {
+module.exports = {
+  res : {
   "success": true,
   "totalResults": 269,
   "search_after": 66706621,
@@ -2707,4 +2708,5 @@ const res = {
       "encryption": "wpa2"
     }
   ]
+}
 }
