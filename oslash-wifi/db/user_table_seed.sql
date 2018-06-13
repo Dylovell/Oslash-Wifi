@@ -4,5 +4,5 @@ CREATE TABLE users (
     picture TEXT,
     auth_id TEXT,
     ssid TEXT,
-    channel_id INTEGER
+    channel_id INTEGER referances tablename colomname
 );

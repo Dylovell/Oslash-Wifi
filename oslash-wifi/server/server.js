@@ -83,6 +83,6 @@ app.get('/auth/user', (req,res)=>{
         : res.status(401).send('Not signed in')
 })
 
-app.get('/api/location', location.getLocataion)
+// app.get('/api/location', location.getLocataion)
 
 app.listen(SERVER_PORT, ()=>{console.log('Connected on port',SERVER_PORT)})

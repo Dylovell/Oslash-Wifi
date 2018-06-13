@@ -8,11 +8,9 @@ INSERT INTO channel
 (channel, frequecy)
 VALUES
 (1,'2.4GHz'),(2,'2.4GHz'),(3,'2.4GHz'),(4,'2.4GHz'),(5,'2.4GHz'),(6,'2.4GHz'),(7,'2.4GHz'),(8,'2.4GHz'),(9,'2.4GHz'),(10,'2.4GHz'),(11,'2.4GHz'),(12,'2.4GHz'),(13,'2.4GHz'),
-
 (36,'5GHz nonDFS'),(38,'5GHz nonDFS'),(40,'5GHz nonDFS'),(42,'5GHz nonDFS'),(44,'5GHz nonDFS'),(46,'5GHz nonDFS'),(48,'5GHz nonDFS')  ,(149'5GHz nonDFS'),(151'5GHz nonDFS'),
 (153,'5GHz nonDFS'),(155,'5GHz nonDFS'),(157,'5GHz nonDFS'),(159,'5GHz nonDFS'),(161,'5GHz nonDFS'),(165,'5GHz nonDFS')
 
-50,52,54,56,58,60,62,64,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,132,134,136,138,140,142,144
 
 
 frequencys will be listed as ('2.4GHz','5GHz nonDFS','5GHz DFS')
