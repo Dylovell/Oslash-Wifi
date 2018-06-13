@@ -18,8 +18,8 @@ export function getUser(){
     }
 }
 
-export function channelQuery(){
-    let channelData = axios.post('/api/channelquery',()).then(res=>res.data);
+export function channelQuery(location,ssid){
+    let channelData = axios.post('/api/channelquery',({location,ssid})).then(res=>res.data);
     return {
         type: CHANNEL_QUERY,
         payload: channelData
