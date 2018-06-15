@@ -85,4 +85,6 @@ app.get('/auth/user', (req,res)=>{
 
 app.post('/api/channelquery', channelAnalysis.simpleUserInput)
 
+app.post('/api/mapselect', channelAnalysis.areaChannelLookup)
+
 app.listen(SERVER_PORT, ()=>{console.log('Connected on port',SERVER_PORT)})

@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
-// import ReactDOM from "react-dom";
 import { compose, withProps } from "recompose";
 import {withScriptjs,withGoogleMap,GoogleMap,Marker} from "react-google-maps";
 
@@ -12,7 +11,7 @@ class MapComponent extends Component {
             isMarkerShown: false,
             loading: true
         }
-        this.posts = this.posts.bind(this)
+        this.handleMarkerClick = this.handleMarkerClick.bind(this)
     }
 
     componentDidMount() {
@@ -22,12 +21,11 @@ class MapComponent extends Component {
 
     delayedShowMarker = () => {
         setTimeout(() => {
-            this.setState( {isMarkerShown:true })}, 4500)
+            this.setState( {isMarkerShown:true })}, 3800)
     }
     
-    handleMarkerClick = () => {
-        this.setState({isMarkerShown:false })
-        this.delayedShowMarker()
+    handleMarkerClick = (mac,channel) => {
+        console.log('selected pin: '+mac+'      channel: '+channel)
     }
 
     loadingTimer = () => {
@@ -35,16 +33,6 @@ class MapComponent extends Component {
             this.setState( {loading:false })}, 3500)
     }
 
-    loadingTicker = () => {
-
-    }
-
-    posts =()=>
-         this.props.mapData.map((el,i)=>
-        // {this.props.isMarkerShown && (
-            <Marker alt={i} position={{ lat:el.trilat, lng:el.trilong }} />
-        // )}
-    )
 
     MyMapComponent = compose(
         withProps({
@@ -58,22 +46,20 @@ class MapComponent extends Component {
         withGoogleMap
     )(props => (
         <GoogleMap defaultZoom={11} defaultCenter={{lat:40.1857988,lng:-111.7409621}}>
-        {/* {props.isMarkerShown && (
-          <Marker alt='1' position={{ lat:this.props.mapData[0].trilat, lng:this.props.mapData[0].trilong }} />
-        )} */}
-        {props.isMarkerShown && this.props.mapData.map((el, i)=> {
-                return (
-                    <Marker key={i} position={{ lat:el.trilat, lng:el.trilong }} />
-      )
-    })}
-      </GoogleMap>
+            {props.isMarkerShown &&  this.props.mapData.map((el, i)=> {
+                return (  
+                    <Marker key={i} position={{ lat:el.trilat, lng:el.trilong }} onClick={()=>{this.handleMarkerClick(el.netid,el.channel)}}/>
+                )
+            })} 
+        </GoogleMap>
     ));
     
     render() {
         if(this.state.loading===true){
             return (
             <div>
-                <p>Loading</p>
+                <p>This is a Loading Animation....</p>
+                {}
             </div>
             )
         }else{
@@ -90,7 +76,6 @@ class MapComponent extends Component {
     }
 }
 
-
 function mapStateToProps(state){
     return{
         user: state.user,
@@ -99,7 +84,3 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps)(MapComponent); 
-
-
-
-// ReactDOM.render(<MyMapComponent isMarkerShown />, document.getElementById("root"));

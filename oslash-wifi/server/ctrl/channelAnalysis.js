@@ -33,10 +33,14 @@ function deDupMacAddress(res){
 }
 
 
+
 module.exports = {
     simpleUserInput: async(req,res) => {
         var returnedList = await getLocataion(req);
         res.status(200).send(returnedList);
+    },
+    areaChannelLookup: async(req,res) => {
+        res.status(200)
     }
     
 }

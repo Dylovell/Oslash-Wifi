@@ -20,8 +20,8 @@ class LookUp extends Component {
         if(this.state.locationInput === '' && this.state.ssidInput === ''){
             alert('Please fill out inputs')}
         else{
-            this.props.channelQuery(this.state.locationInput,this.state.ssidInput);
-        this.setState({locationInput:'',ssidInput:'',showMap:true})}
+           this.props.channelQuery(this.state.locationInput,this.state.ssidInput);
+            this.setState({locationInput:'',ssidInput:'',showMap:true})}
     }
 
     takeMeBack(){
