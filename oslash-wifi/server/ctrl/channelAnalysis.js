@@ -19,7 +19,7 @@ function getLocataion(userReq){
 function ssidCitySearch(lat1,lat2,long1,long2,ssid){
     let FormatedSSID = encodeURI(ssid)
     var wigleData = {
-        url: `https://api.wigle.net/api/v2/network/search?onlymine=false&lastupdt=20180101&latrange1=${lat1}&latrange2=${lat2}&longrange1=${long1}&longrange2=${long2}&freenet=false&paynet=false&ssid=${FormatedSSID}`,
+        url: `https://api.wigle.net/api/v2/network/search?onlymine=false&lastupdt=20170101&latrange1=${lat1}&latrange2=${lat2}&longrange1=${long1}&longrange2=${long2}&freenet=false&paynet=false&ssid=${FormatedSSID}`,
         headers: {'Authorization': BASIC_AUTH} 
     }
     return axios.get(wigleData.url, {headers: wigleData.headers}).then(res=>deDupMacAddress(res.data))

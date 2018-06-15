@@ -3,8 +3,7 @@ import axios from 'axios'
 const initialState={
     user:{},
     localChannelData:{},
-    location:'',
-    ssid:''
+    mapData:{}
 }
 
 const GET_USER_DATA = 'GET_USER_DATA';
@@ -31,7 +30,7 @@ export default function reducer(state = initialState, action){
         case GET_USER_DATA + '_FULFILLED': 
             return Object.assign({}, state, {user: action.payload});
         case CHANNEL_QUERY + '_FULFILLED': 
-            return Object.assign({}, state, {localChannelData: action.payload});
+            return Object.assign({}, state, {mapData: action.payload});
         default:
             return state;
     }
