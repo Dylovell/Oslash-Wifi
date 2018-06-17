@@ -10,20 +10,17 @@ function deDupLocation(res){
             trilat:el.trilat,
             trilong:el.trilong,
             netid:el.netid,
+            channel:el.channel,
             distanceValue:(Math.abs(Math.round(el.trilat * 10000)))+(Math.abs(Math.round(el.trilong * 10000)))}
         }))
     mappedData.sort(function(a,b) {return (a.distanceValue > b.distanceValue) ? 1 : ((b.distanceValue > a.distanceValue) ? -1 : 0);} ); 
 
-    groupedData = [];
-    simplifiedData = [];
-    
+    let groupedData = [];  
     function dataGrouper(){
         let tempGroup = [];
         for(let i=0;i<mappedData.length;i++){
             let nextI = i+1;
-            let dif = nextI === mappedData.length
-                ? 0
-                : mappedData[nextI].distanceValue - mappedData[i].distanceValue
+            let dif = nextI === mappedData.length ?0 :mappedData[nextI].distanceValue - mappedData[i].distanceValue;
 
             if(dif < 30 ){
                 tempGroup.push(mappedData[i])
@@ -36,18 +33,22 @@ function deDupLocation(res){
         }
         return tempGroup.length !==0 ?groupedData.push(tempGroup):groupedData
     }
+    dataGrouper()
 
-dataGrouper()
-console.log(groupedData)
-    
+    let simplifiedData = ()=>{
+        let returnArr = [];
+        for(let i=0;i<groupedData.length;i++){
+            groupedData[i].length === 1
+                ?returnArr.push(groupedData[i][0])
+                :groupedData[i].length !== 0
+                    ?returnArr.push(groupedData[Math.round(groupedData.length/2)][0])
+                    :null
+        }
+        return returnArr
+    }
 
-    // function returnArray(){
-    //     // console.log(simplifiedArea)
-    //     if(simplifiedArea.length === 0){  return mappedData}
-    //     else{   return simplifiedArea}
-    // }
     
-    // return returnArray()
+    return console.log(simplifiedData())
 }
 
 deDupLocation(resLDS)
