@@ -21,7 +21,7 @@ class MapComponent extends Component {
 
     delayedShowMarker = () => {
         setTimeout(() => {
-            this.setState( {isMarkerShown:true })}, 3800)
+            this.setState( {isMarkerShown:true })}, 4000)
     }
     
     handleMarkerClick = (mac,channel) => {
@@ -30,7 +30,7 @@ class MapComponent extends Component {
 
     loadingTimer = () => {
         setTimeout(() => {
-            this.setState( {loading:false })}, 3500)
+            this.setState( {loading:false })}, 1500)
     }
 
 

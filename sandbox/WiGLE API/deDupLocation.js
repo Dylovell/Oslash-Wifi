@@ -37,13 +37,16 @@ function deDupLocation(res){
 
     let simplifiedData = ()=>{
         let returnArr = [];
+        if(groupedData.length === 1){
+            returnArr.push(groupedData[0][Math.round(groupedData[0].length/2)])
+        }else{
         for(let i=0;i<groupedData.length;i++){
             groupedData[i].length === 1
                 ?returnArr.push(groupedData[i][0])
                 :groupedData[i].length !== 0
-                    ?returnArr.push(groupedData[Math.round(groupedData.length/2)][0])
+                    ?returnArr.push(groupedData[i][Math.round(groupedData[i].length/2)])
                     :null
-        }
+        }}
         return returnArr
     }
 
