@@ -1,5 +1,7 @@
 const {res} = require('./sampleDataMutilpleLocations')
     ,{res2} = require('./sampleDataDevmountain-internal')
+    ,{res100} = require('./sampleData100')
+    ,{resLDS} = require('./sampledataLdsProvo')
 
 function deDupLocation(res){
     
@@ -10,37 +12,45 @@ function deDupLocation(res){
             netid:el.netid,
             distanceValue:(Math.abs(Math.round(el.trilat * 10000)))+(Math.abs(Math.round(el.trilong * 10000)))}
         }))
-        
-    mappedData.sort(function(a,b){
-        a.distanceValue>b.distanceValue
-        ?1 :((b.distanceValue>a.distanceValue) 
-        ?-1 :0);
-    });
-        
-    let simplifiedArea = [];
+    mappedData.sort(function(a,b) {return (a.distanceValue > b.distanceValue) ? 1 : ((b.distanceValue > a.distanceValue) ? -1 : 0);} ); 
 
-    let groupedIndexs = [];
-
-    let ticker = 1;
-    console.log(mappedData)
-    mappedData.sort(function(a,b){
-        (b.distanceValue - a.distanceValue) < 30 //.003 lat/lng
-        ?simplifiedArea.push(a)
-        :null
-
-        ++ticker;
-    })
-
-    function returnArray(){
-        // console.log(simplifiedArea)
-        if(simplifiedArea.length === 0){  return mappedData}
-        else{   return simplifiedArea}
-    }
+    groupedData = [];
+    simplifiedData = [];
     
-    return console.log(returnArray())
+    function dataGrouper(){
+        let tempGroup = [];
+        for(let i=0;i<mappedData.length;i++){
+            let nextI = i+1;
+            let dif = nextI === mappedData.length
+                ? 0
+                : mappedData[nextI].distanceValue - mappedData[i].distanceValue
+
+            if(dif < 30 ){
+                tempGroup.push(mappedData[i])
+            }
+            else{
+                tempGroup.push(mappedData[i]);
+                groupedData.push(tempGroup);
+                tempGroup = [];
+            }
+        }
+        return tempGroup.length !==0 ?groupedData.push(tempGroup):groupedData
+    }
+
+dataGrouper()
+console.log(groupedData)
+    
+
+    // function returnArray(){
+    //     // console.log(simplifiedArea)
+    //     if(simplifiedArea.length === 0){  return mappedData}
+    //     else{   return simplifiedArea}
+    // }
+    
+    // return returnArray()
 }
 
-deDupLocation(res2)
+deDupLocation(resLDS)
 
 //.004 ish is margin of error
 
