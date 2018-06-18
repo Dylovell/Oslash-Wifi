@@ -93,7 +93,7 @@ function areaChannelRequest(obj){
         //Referance URL with QOS set to 6 and variance set to .001
         //https://api.wigle.net/api/v2/network/search?onlymine=false&latrange1=40.22389493&latrange2=40.227894930000005&longrange1=-111.66332355&longrange2=-111.65932355000001&lastupdt=20170101&freenet=false&paynet=false&minQoS=6&variance=0.001
 
-        url: `https://api.wigle.net/api/v2/network/search?onlymine=false&lastupdt=20170101&latrange1=${lat1}&latrange2=${lat2}&longrange1=${long1}&longrange2=${long2}&freenet=false&paynet=false`,
+        url: `https://api.wigle.net/api/v2/network/search?onlymine=false&lastupdt=20170101&latrange1=${lat1}&latrange2=${lat2}&longrange1=${long1}&longrange2=${long2}&freenet=false&paynet=false&minQoS=6&variance=0.001`,
         headers: {'Authorization': BASIC_AUTH} 
     }
     return axios.get(wigleData.url, {headers: wigleData.headers}).then(res=>channelCounter(res.data))

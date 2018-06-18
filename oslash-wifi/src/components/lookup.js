@@ -8,34 +8,35 @@ class LookUp extends Component {
     constructor(){
         super()
         this.state={
-            locationInput:'provo',
-            ssidInput:'devmountain-internal',
-            mapData:{},
-            showMap:false
+            locationInput:'',
+            ssidInput:'',
+            mapData:{}
+            // showMap:false
         }
         this.submitButton = this.submitButton.bind(this)
+        this.takeMeBack = this.takeMeBack.bind(this)
     }
-    
-    // componentDidUpdate(
 
-    // )
+    componentDidMount(){
+        this.props.showMapState(false)
+    }
 
-    submitButton() {
+    async submitButton() {
         if(this.state.locationInput === '' && this.state.ssidInput === ''){
             alert('Please fill out inputs')}
         else{
-            this.props.channelQuery(this.state.locationInput,this.state.ssidInput);
-            this.setState({locationInput:'',ssidInput:'',showMap:true});
-            this.props.showMapState(true);
+            await this.props.channelQuery(this.state.locationInput,this.state.ssidInput).then(this.setState({locationInput:'',ssidInput:''}));
+            this.props.showMapState(true)
         }
     }
 
     takeMeBack(){
-        this.setState({showMap:false})
+        this.props.showMapState(false)
     }
 
     render() {
-        if(this.state.showMap===false){
+        console.log(this.props)
+        if(this.props.showMap===false){
         return (
             <div className="Lookup">
                 <p>LOOK UPP </p>

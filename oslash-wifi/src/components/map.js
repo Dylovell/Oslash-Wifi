@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { compose, withProps } from "recompose";
 import {withScriptjs,withGoogleMap,GoogleMap,Marker} from "react-google-maps";
 
-import {mapSelect} from '../ducks/reducer'
+import {mapSelect, showMapState} from '../ducks/reducer'
 
 
 class MapComponent extends Component {
@@ -22,18 +22,16 @@ class MapComponent extends Component {
     }
 
     delayedShowMarker = () => {
-        setTimeout(() => {
-            this.setState( {isMarkerShown:true })}, 3000)
+        this.setState( {isMarkerShown:true })
     }
     
     handleMarkerClick = (ssidObj) => {
         this.props.mapSelect(ssidObj);
-
+        this.props.showMapState(false)
     }
 
     loadingTimer = () => {
-        setTimeout(() => {
-            this.setState( {loading:false })}, 1500)
+        this.setState( {loading:false })
     }
 
 
@@ -87,4 +85,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps,{mapSelect})(MapComponent); 
+export default connect(mapStateToProps,{mapSelect, showMapState})(MapComponent); 
