@@ -19,7 +19,7 @@ function getLocataion(userReq){
 //search for ssid from Wigle in specified area
 function ssidCitySearch(lat1,lat2,long1,long2,ssid){
     let FormatedSSID = encodeURI(ssid)
-    var wigleData = {
+    let wigleData = {
         url: `https://api.wigle.net/api/v2/network/search?onlymine=false&lastupdt=20170101&latrange1=${lat1}&latrange2=${lat2}&longrange1=${long1}&longrange2=${long2}&freenet=false&paynet=false&ssid=${FormatedSSID}`,
         headers: {'Authorization': BASIC_AUTH} 
     }
@@ -34,7 +34,7 @@ function deDupMacAddress(res){
     return ssidListSepcific
 }
 
-//removes duplicate ssid's that are within .003 lat/lng of eachother       this ones was a killer
+//removes duplicate ssid's that are within .003 lat/lng of eachother       this one was a beast
 function deDupLocation(res){
     let mappedData = res.results.map(((el)=>{
         return{
@@ -84,14 +84,50 @@ function deDupLocation(res){
     return simplifiedData()
 }
 
+function areaChannelRequest(obj){
+    let lat1 = obj.trilat -.002,
+        lat2 = obj.trilat +.002,
+        long1 = obj.trilong -.002,
+        long2 = obj.trilong +.002
+    let wigleData = {
+        //Referance URL with QOS set to 6 and variance set to .001
+        //https://api.wigle.net/api/v2/network/search?onlymine=false&latrange1=40.22389493&latrange2=40.227894930000005&longrange1=-111.66332355&longrange2=-111.65932355000001&lastupdt=20170101&freenet=false&paynet=false&minQoS=6&variance=0.001
+
+        url: `https://api.wigle.net/api/v2/network/search?onlymine=false&lastupdt=20170101&latrange1=${lat1}&latrange2=${lat2}&longrange1=${long1}&longrange2=${long2}&freenet=false&paynet=false`,
+        headers: {'Authorization': BASIC_AUTH} 
+    }
+    return axios.get(wigleData.url, {headers: wigleData.headers}).then(res=>channelCounter(res.data))
+}
+
+function channelCounter(res){
+    let frequecy2GHz = {};
+    let frequecy5GHzDFS = {};
+    let frequecy5GHzNonDFS = {};
+
+    res.results.forEach(function(el) {
+        el.channel<15
+            ?frequecy2GHz[el.channel] = (frequecy2GHz[el.channel] || 0) +1
+            :el.channel>50 && el.channel<144
+                ?frequecy5GHzDFS[el.channel] = (frequecy5GHzDFS[el.channel] || 0) +1
+                :frequecy5GHzNonDFS[el.channel] = (frequecy5GHzNonDFS[el.channel] || 0) +1
+    })
+    let channels = {
+        allChannels: Object.assign({},frequecy2GHz,frequecy5GHzNonDFS,frequecy5GHzDFS),
+        frequecy2GHz: frequecy2GHz,
+        frequecy5GHzDFS: frequecy5GHzDFS,
+        frequecy5GHzNonDFS: frequecy5GHzNonDFS
+    }
+    return channels
+}
 
 module.exports = {
     simpleUserInput: async(req,res) => {
-        var returnedList = await getLocataion(req);
+        let returnedList = await getLocataion(req);
         res.status(200).send(returnedList);
     },
     areaChannelLookup: async(req,res) => {
-        res.status(200)
-    }
+        let channelList = await areaChannelRequest(req.body)
+        res.status(200).send(channelList)
+    },
     
 }

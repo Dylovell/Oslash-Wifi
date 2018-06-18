@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import { compose, withProps } from "recompose";
 import {withScriptjs,withGoogleMap,GoogleMap,Marker} from "react-google-maps";
 
+import {mapSelect} from '../ducks/reducer'
+
 
 class MapComponent extends Component {
     constructor(){
@@ -21,11 +23,12 @@ class MapComponent extends Component {
 
     delayedShowMarker = () => {
         setTimeout(() => {
-            this.setState( {isMarkerShown:true })}, 4000)
+            this.setState( {isMarkerShown:true })}, 3000)
     }
     
-    handleMarkerClick = (mac,channel) => {
-        console.log('selected pin: '+mac+'      channel: '+channel)
+    handleMarkerClick = (ssidObj) => {
+        this.props.mapSelect(ssidObj);
+
     }
 
     loadingTimer = () => {
@@ -48,7 +51,7 @@ class MapComponent extends Component {
         <GoogleMap defaultZoom={11} defaultCenter={{lat:40.1857988,lng:-111.7409621}}>
             {props.isMarkerShown &&  this.props.mapData.map((el, i)=> {
                 return (  
-                    <Marker key={i} position={{ lat:el.trilat, lng:el.trilong }} onClick={()=>{this.handleMarkerClick(el.netid,el.channel)}}/>
+                    <Marker key={i} position={{ lat:el.trilat, lng:el.trilong }} onClick={()=>{this.handleMarkerClick(el)}}/>
                 )
             })} 
         </GoogleMap>
@@ -79,8 +82,9 @@ class MapComponent extends Component {
 function mapStateToProps(state){
     return{
         user: state.user,
-        mapData: state.mapData
+        mapData: state.mapData,
+        showMap: state.showMap
     }
 }
 
-export default connect(mapStateToProps)(MapComponent); 
+export default connect(mapStateToProps,{mapSelect})(MapComponent); 

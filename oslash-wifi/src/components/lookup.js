@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import MapComponent from './map'
 
-import {channelQuery} from '../ducks/reducer'
+import MapComponent from './map'
+import {channelQuery, showMapState} from '../ducks/reducer'
 
 class LookUp extends Component {
     constructor(){
@@ -15,22 +15,26 @@ class LookUp extends Component {
         }
         this.submitButton = this.submitButton.bind(this)
     }
+    
+    // componentDidUpdate(
+
+    // )
 
     submitButton() {
         if(this.state.locationInput === '' && this.state.ssidInput === ''){
             alert('Please fill out inputs')}
         else{
-           this.props.channelQuery(this.state.locationInput,this.state.ssidInput);
-            this.setState({locationInput:'',ssidInput:'',showMap:true})}
+            this.props.channelQuery(this.state.locationInput,this.state.ssidInput);
+            this.setState({locationInput:'',ssidInput:'',showMap:true});
+            this.props.showMapState(true);
+        }
     }
 
     takeMeBack(){
         this.setState({showMap:false})
     }
-    
 
     render() {
-        // console.log(this.props)
         if(this.state.showMap===false){
         return (
             <div className="Lookup">
@@ -63,7 +67,8 @@ function mapStateToProps(state){
     return{
         user: state.user,
         mapData: state.mapData,
+        showMap: state.showMap
     }
 }
 
-export default connect(mapStateToProps,{channelQuery})(LookUp);
+export default connect(mapStateToProps,{channelQuery, showMapState})(LookUp);
