@@ -11,14 +11,16 @@ class MapComponent extends Component {
         super()
         this.state={
             isMarkerShown: false,
-            loading: true
+            loading: true,
+            mapCenter:{}
         }
         this.handleMarkerClick = this.handleMarkerClick.bind(this)
     }
 
     componentDidMount() {
-        this.delayedShowMarker()
-        this.loadingTimer()
+        this.delayedShowMarker();
+        this.loadingTimer();
+        this.mapMiddle();
     }
 
     delayedShowMarker = () => {
@@ -34,6 +36,10 @@ class MapComponent extends Component {
         this.setState( {loading:false })
     }
 
+    mapMiddle = () =>{
+        let middleObj = this.props.mapData[Math.round(this.props.mapData.length/2)]
+        return this.setState({mapCenter:{lat:middleObj.trilat, lng:middleObj.trilong}})
+    }
 
     MyMapComponent = compose(
         withProps({
@@ -46,7 +52,7 @@ class MapComponent extends Component {
         withScriptjs,
         withGoogleMap
     )(props => (
-        <GoogleMap defaultZoom={11} defaultCenter={{lat:40.1857988,lng:-111.7409621}}>
+        <GoogleMap defaultZoom={11} defaultCenter={{lat:this.state.mapCenter.lat,lng:this.state.mapCenter.lng}}>
             {props.isMarkerShown &&  this.props.mapData.map((el, i)=> {
                 return (  
                     <Marker key={i} position={{ lat:el.trilat, lng:el.trilong }} onClick={()=>{this.handleMarkerClick(el)}}/>
