@@ -47,10 +47,10 @@ class LookUp extends Component {
                 <div className="Lookup">
                     <p>LOOK UPP </p>
                         Location
-                        <input className='InputBox' value={this.state.locationInput} onChange={(e)=>this.setState({locationInput:e.target.value})}/>
+                        <input className='Inputbox' value={this.state.locationInput} onChange={(e)=>this.setState({locationInput:e.target.value})}/>
                         SSID
-                        <input className='InputBox' value={this.state.ssidInput} onChange={(e)=>this.setState({ssidInput:e.target.value})}/>
-                        <button onClick={()=>{this.submitButton();}}>submit</button>
+                        <input className='Inputbox' value={this.state.ssidInput} onChange={(e)=>this.setState({ssidInput:e.target.value})}/>
+                        <button className='Button' onClick={()=>{this.submitButton();}}>submit</button>
                         <br/>
                         <ChannelChart/>
                 </div> 

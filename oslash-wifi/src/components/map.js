@@ -35,13 +35,13 @@ class MapComponent extends Component {
             googleMapURL:
             "https://maps.googleapis.com/maps/api/js?key=AIzaSyAOvXtIIwONaI1CEhF9Ivw2-fDbFnmEPBU&v=3.exp&libraries=geometry,drawing,places",
             loadingElement: <div style={{ height: `100%` }} />,
-            containerElement: <div style={{ height: `70vh`, width:`70vw` }} />,
+            containerElement: <div style={{ height: `70vh`, width:`100%` }} />,
             mapElement: <div style={{ height: `100%` }} />
         }),
         withScriptjs,
         withGoogleMap
     )(props => (
-        <GoogleMap defaultZoom={11} defaultCenter={{lat:this.state.mapCenter.lat,lng:this.state.mapCenter.lng}}>
+        <GoogleMap defaultZoom={12} defaultCenter={{lat:this.state.mapCenter.lat,lng:this.state.mapCenter.lng}}>
             {props.isMarkerShown &&  this.props.mapData.map((el, i)=> {
                 return (  
                     <Marker key={i} position={{ lat:el.trilat, lng:el.trilong }} onClick={()=>{this.handleMarkerClick(el)}}/>

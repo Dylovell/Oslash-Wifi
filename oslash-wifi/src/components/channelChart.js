@@ -25,13 +25,13 @@ class ChannelChart extends Component {
     render() {
         if(this.props.localChannelData.returned === false){
             return(
-                <div><hr/>I've been lookin for my missin Chart</div> 
+                <div><hr/>I've been lookin for my missing Chart</div> 
             )
         }else{
             return(
                 <div>
                     <hr/>
-                    My missin Chart, I found it!
+                    My missing Chart, I found it!
                     <hr/>
                     2.4GHz Spectrum
                     <br/>

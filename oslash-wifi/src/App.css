@@ -1,29 +1,34 @@
-.App {
-  /* text-align: center; */
+.App{
+  text-align: center;
 }
-
-.Main {
-
-}
-
-.Nav{
-  
-}
-
-.App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
-  height: 60px;
-}
-
-.App-header {
+.Header {
   background-color: rgb(139, 139, 139);
-  height: 120px;
+  height: 60px;
   padding: 10px;
   color: white;
+  display: flex;
+  width: 100%;
 }
+.Nav-center{
+  flex-grow: 1;
+}
+.Nav{
+  flex-grow: 0;
+  margin-right: 20px;
+}
+.App-logo {
+  flex-grow: 0;
+  height: 60px;
+}
+.Main{
+  /* text-align: center */
+}
+.Inputbox{
+  width: 100px;
+  border: lightslategrey 1px inset;
+}
+.Button{
 
-.App-title {
-  font-size: 1.5em;
 }
 
 
