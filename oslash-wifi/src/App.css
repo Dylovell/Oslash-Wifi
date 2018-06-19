@@ -4,7 +4,8 @@
 .Header {
   background-color: rgb(139, 139, 139);
   height: 60px;
-  padding: 10px;
+  /* padding: 10px; */
+  /* padding-top: 10px; */
   color: white;
   display: flex;
   width: 100%;
@@ -15,6 +16,7 @@
 .Nav{
   flex-grow: 0;
   margin-right: 20px;
+  margin-top: 5px;
 }
 .App-logo {
   flex-grow: 0;
