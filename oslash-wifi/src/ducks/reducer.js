@@ -3,7 +3,7 @@ import axios from 'axios'
 const initialState={
     user:{},
     localChannelData:{},
-    mapData:{},
+    mapData:[],
     showMap:false
 }
 

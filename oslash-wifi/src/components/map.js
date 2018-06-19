@@ -10,30 +10,19 @@ class MapComponent extends Component {
     constructor(){
         super()
         this.state={
-            isMarkerShown: false,
-            loading: true,
+            isMarkerShown: true,
             mapCenter:{}
         }
         this.handleMarkerClick = this.handleMarkerClick.bind(this)
     }
 
     componentDidMount() {
-        this.delayedShowMarker();
-        this.loadingTimer();
         this.mapMiddle();
-    }
-
-    delayedShowMarker = () => {
-        this.setState( {isMarkerShown:true })
     }
     
     handleMarkerClick = (ssidObj) => {
         this.props.mapSelect(ssidObj);
         this.props.showMapState(false)
-    }
-
-    loadingTimer = () => {
-        this.setState( {loading:false })
     }
 
     mapMiddle = () =>{
@@ -62,14 +51,6 @@ class MapComponent extends Component {
     ));
     
     render() {
-        if(this.state.loading===true){
-            return (
-            <div>
-                <p>This is a Loading Animation....</p>
-                {}
-            </div>
-            )
-        }else{
             return (
                 <div>
                     <div>Select Your Approximate Area</div>
@@ -80,7 +61,7 @@ class MapComponent extends Component {
                 </div>
                 )            
         }
-    }
+    
 }
 
 function mapStateToProps(state){
