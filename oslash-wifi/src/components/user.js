@@ -12,10 +12,8 @@ class User extends Component {
     render() {
         return (
             <div className='User'>
-                <p>USER</p>
-                <br/>
+                <p>{this.props.user.user_name}'s User Information</p>
                 <img alt ='' src={this.props.user.picture} height='100px'/>
-                <p>USER THAT IS SINGED IN = {this.props.user.user_name}</p>
             </div> 
         )
     }

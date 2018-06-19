@@ -124,6 +124,7 @@ module.exports = {
     simpleUserInput: async(req,res) => {
         let returnedList = await getLocataion(req);
         res.status(200).send(returnedList);
+        ///////////////////////////////////CREATE A FIX FOR NOTHING RETURNS
     },
     areaChannelLookup: async(req,res) => {
         let channelList = await areaChannelRequest(req.body)

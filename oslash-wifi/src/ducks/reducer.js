@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const initialState={
     user:{},
-    localChannelData:{},
+    localChannelData:{returned:false},
     mapData:[],
     showMap:false
 }

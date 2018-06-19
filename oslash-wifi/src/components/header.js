@@ -12,7 +12,6 @@ class Header extends Component {
         <header className="App-header">
             <Link to='/'><img src={logo} className="App-logo" alt="logo"/></Link>
             <Nav/>
-            <h1 className="App-title">oSlash WIFI  HEADER</h1>
         </header>
       </div>
     );

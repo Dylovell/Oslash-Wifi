@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 import MapComponent from './map'
+import ChannelChart from './channelChart'
 import {channelQuery, mapSelect, showMapState} from '../ducks/reducer'
 
 class LookUp extends Component {
     constructor(){
         super()
         this.state={
-            locationInput:'',
-            ssidInput:'',
+            locationInput:'provo',
+            ssidInput:'wavetronix',
             mapData:{},
             loadingTimer:false
         }
@@ -26,7 +27,6 @@ class LookUp extends Component {
             alert('Please fill out inputs')}
         else{
             await this.props.channelQuery(this.state.locationInput,this.state.ssidInput)
-                console.log(this.props.mapData);
                 this.setState({locationInput:'',ssidInput:''});
                 this.props.mapData.length === 1 ?this.props.mapSelect(this.props.mapData[0]) :this.props.showMapState(true);
         }
@@ -51,6 +51,8 @@ class LookUp extends Component {
                         SSID
                         <input className='InputBox' value={this.state.ssidInput} onChange={(e)=>this.setState({ssidInput:e.target.value})}/>
                         <button onClick={()=>{this.submitButton();}}>submit</button>
+                        <br/>
+                        <ChannelChart/>
                 </div> 
             )
         }else if(this.state.loadingTimer){
@@ -75,7 +77,8 @@ function mapStateToProps(state){
     return{
         user: state.user,
         mapData: state.mapData,
-        showMap: state.showMap
+        showMap: state.showMap,
+        localChannelData: state.localChannelData
     }
 }
 
