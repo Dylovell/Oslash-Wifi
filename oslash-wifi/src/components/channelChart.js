@@ -1,45 +1,74 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {Line,Bar} from 'react-chartjs-2'
 
 
 class ChannelChart extends Component {
     constructor(){
         super()
-        this.ChannelMapper2GHz = this.ChannelMapper2GHz.bind(this);
-        this.ChannelMapper5GHz = this.ChannelMapper5GHz.bind(this);
+        this.state={
+        }
+        this.ChannelDataMapper2GHz = this.ChannelDataMapper2GHz.bind(this);
+        this.ChannelDataMapper5GHz = this.ChannelDataMapper5GHz.bind(this);
     }
 
-    ChannelMapper2GHz(){
+    ChannelDataMapper2GHz(){
         let channelsArray = Object.entries(this.props.localChannelData.frequecy2GHz)
-        return channelsArray.map((el,i)=>
-            <div key={i}>Channel {el[0]} has {el[1]} users on it.</div>
+        let data = {
+            labels:[],
+            datasets: [{
+                label: 'Networks per Channel',
+                data: [],
+                borderWidth: 1
+            }]
+        }
+        channelsArray.map((el)=>
+                data.datasets[0].data.push(el[1])
             )
+        channelsArray.map((el)=>
+                data.labels.push(el[0])
+            )
+        return data
     }
-    ChannelMapper5GHz(){
+
+    ChannelDataMapper5GHz(){
         let channelsArray = Object.entries(this.props.localChannelData.frequecy5GHzNonDFS)
-        return channelsArray.map((el,i)=>
-            <div key={i}>Channel {el[0]} has {el[1]} users on it.</div>
+        let data = {
+            labels:[],
+            datasets: [{
+                label: 'Networks per Channel',
+                data: [],
+                borderWidth: 1
+            }]
+        }
+        channelsArray.map((el)=>
+                data.datasets[0].data.push(el[1])
             )
+        channelsArray.map((el)=>
+                data.labels.push(el[0])
+            )
+        return data
     }
 
     render() {
         if(this.props.localChannelData.returned === false){
             return(
-                <div><hr/>I've been lookin for my missing Chart</div> 
+                <div><hr/>Not a Chart</div> 
             )
         }else{
             return(
                 <div>
                     <hr/>
-                    My missing Chart, I found it!
+                    A Chart!
                     <hr/>
                     2.4GHz Spectrum
                     <br/>
-                    <this.ChannelMapper2GHz/>
+                    <Line data={this.ChannelDataMapper2GHz()}/>
                     <hr/>
                     5GHz NonDFS Spectrum
+                    <Bar data={this.ChannelDataMapper5GHz()}/>
                     <br/>
-                    <this.ChannelMapper5GHz/>
+               
                 </div>
             )
         }

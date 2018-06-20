@@ -9,8 +9,8 @@ class LookUp extends Component {
     constructor(){
         super()
         this.state={
-            locationInput:'provo',
-            ssidInput:'wavetronix',
+            locationInput:'',
+            ssidInput:'',
             mapData:{},
             loadingTimer:false
         }

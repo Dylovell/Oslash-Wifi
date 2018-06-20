@@ -6,7 +6,7 @@ export default class Main extends Component {
     render() {
         return (
             <div className="Main">
-                <img alt='Main-image' src={crowd} width='100%'/>
+                <img alt='Main' src={crowd} width='100%'/>
                 <br/>
                 <p>Want faster WIFI?</p>
                 <p>Make your WIFI faster with this one trick!</p>
