@@ -11,6 +11,8 @@ class LookUp extends Component {
         this.state={
             locationInput:'',
             ssidInput:'',
+            locationInputPlaceholder:'Your General Location',
+            ssidInputPlaceholder:'Your WiFi Name',
             mapData:{},
             loadingTimer:false
         }
@@ -27,6 +29,7 @@ class LookUp extends Component {
             alert('Please fill out inputs')}
         else{
             await this.props.channelQuery(this.state.locationInput,this.state.ssidInput)
+                this.setState({locationInputPlaceholder:this.state.locationInput,ssidInputPlaceholder:this.state.ssidInput});
                 this.setState({locationInput:'',ssidInput:''});
                 this.props.mapData.length === 1 ?this.props.mapSelect(this.props.mapData[0]) :this.props.showMapState(true);
         }
@@ -45,12 +48,22 @@ class LookUp extends Component {
         if(this.props.showMap===false){
             return (
                 <div className="Lookup">
-                    <p>LOOK UPP </p>
-                        Location
-                        <input className='Inputbox' value={this.state.locationInput} onChange={(e)=>this.setState({locationInput:e.target.value})}/>
-                        SSID
-                        <input className='Inputbox' value={this.state.ssidInput} onChange={(e)=>this.setState({ssidInput:e.target.value})}/>
-                        <button className='Button' onClick={()=>{this.submitButton();}}>submit</button>
+                    <p>LOOK UP</p>
+                        <input className='Inputbox' 
+                            placeholder={this.state.locationInputPlaceholder} 
+                            value={this.state.locationInput} 
+                            onChange={(e)=>this.setState({locationInput:e.target.value})}
+                        />
+                        <br/>
+                        <br/>
+                        <input className='Inputbox' 
+                            placeholder={this.state.ssidInputPlaceholder} 
+                            value={this.state.ssidInput} 
+                            onChange={(e)=>this.setState({ssidInput:e.target.value})}
+                        />
+                        <br/>
+                        <br/>
+                        <button className='Button' onClick={()=>{this.submitButton();}}>Find</button>
                         <br/>
                         <ChannelChart/>
                 </div> 

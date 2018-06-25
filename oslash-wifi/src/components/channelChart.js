@@ -53,18 +53,18 @@ class ChannelChart extends Component {
     render() {
         if(this.props.localChannelData.returned === false){
             return(
-                <div><hr/>Not a Chart</div> 
+               <div>
+                   <br/>
+                   <p>Fill out the fields above</p>
+                </div>
             )
         }else{
             return(
                 <div>
-                    <hr/>
-                    A Chart!
-                    <hr/>
                     2.4GHz Spectrum
                     <br/>
                     <Line data={this.ChannelDataMapper2GHz()}/>
-                    <hr/>
+                    <br/>
                     5GHz NonDFS Spectrum
                     <Bar data={this.ChannelDataMapper5GHz()}/>
                     <br/>

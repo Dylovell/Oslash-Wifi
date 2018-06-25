@@ -6,7 +6,7 @@ import Auth from './auth';
 export default class Nav extends Component {
     render() {
         return (
-            <div className='Nav'>
+            <div id='sideNav' className='NavMenu'>
                 <Auth/>
                 <div><Link to='/lookup'>Look Up</Link></div>
                 <div><Link to='/about'>About</Link></div>

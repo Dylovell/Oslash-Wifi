@@ -28,7 +28,7 @@ export function channelQuery(location,ssid){
         payload: channelData
     }
 }
-///////////////////////////////////////////     NOT WORKING
+/////////////////////////////////////////// SHOWS A MAP WHEN THE USER HAS TO CHOSE BETWEEN MULTIPLE LOCATIONS
 export function showMapState(tOrF){
     return {
         type: SHOW_MAP_STATE,
