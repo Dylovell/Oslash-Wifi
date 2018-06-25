@@ -41,13 +41,22 @@ class ChannelChart extends Component {
                 borderWidth: 1
             }]
         }
+        let options={
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
         channelsArray.map((el)=>
                 data.datasets[0].data.push(el[1])
             )
         channelsArray.map((el)=>
                 data.labels.push(el[0])
             )
-        return data
+        return {data:data,options:options}
     }
 
     render() {
@@ -61,12 +70,12 @@ class ChannelChart extends Component {
         }else{
             return(
                 <div>
-                    2.4GHz Spectrum
+                    2.4GHz Wifi Spectrum
                     <br/>
                     <Line data={this.ChannelDataMapper2GHz()}/>
                     <br/>
-                    5GHz NonDFS Spectrum
-                    <Bar data={this.ChannelDataMapper5GHz()}/>
+                    5GHz WiFi Spectrum
+                    <Bar data={this.ChannelDataMapper5GHz().data} options={this.ChannelDataMapper5GHz().options}/>
                     <br/>
                
                 </div>

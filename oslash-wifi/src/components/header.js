@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../styling/OslashLogo.svg';
+import menu from '../styling/menu.svg';
 import '../App.css';
 import {Link} from 'react-router-dom'
 import Auth from './auth';
@@ -27,7 +28,7 @@ class Header extends Component {
         <header className="Header">
             <Link to='/'><img src={logo} className="Logo" alt="logo" onClick={()=>this.closeMenu()}/></Link>
             <div className='Nav-center'/>
-            <img src={logo} alt='Menu' onClick={this.openMenu} className="MenuIcon"/>
+            <img src={menu} alt='Menu' onClick={this.openMenu} className="MenuIcon"/>
             {/* <svg 
               alt='Menu' 
               onClick={this.openMenu} 

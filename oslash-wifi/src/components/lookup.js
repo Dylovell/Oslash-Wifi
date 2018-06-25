@@ -65,18 +65,21 @@ class LookUp extends Component {
                         <br/>
                         <button className='Button' onClick={()=>{this.submitButton();}}>Find</button>
                         <br/>
+                        <br/>
                         <ChannelChart/>
                 </div> 
             )
         }else if(this.state.loadingTimer){
             return (
                 <div>
-                   <p>This is a loading animation</p>
+                   <hr/>
+                   <hr/>
                 </div> 
             )
         }else{
             return (
                 <div>
+                    <br/>
                     <MapComponent/>
                     <button onClick={()=>{this.takeMeBack();}}>back</button>
                 </div> 

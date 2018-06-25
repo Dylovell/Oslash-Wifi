@@ -4,14 +4,16 @@ const initialState={
     user:{},
     localChannelData:{returned:false},
     mapData:[],
-    showMap:false
+    showMap:false,
+    loading:false
 }
 
 const GET_USER_DATA = 'GET_USER_DATA';
 const CHANNEL_QUERY  = 'CHANNEL_QUERY';
 const MAP_SELECT = 'MAP_SELECT';
 const SHOW_MAP_STATE = 'SHOW_MAP_STATE';
-const CLEAR_DATA = 'CLEAR_DATA'
+const SHOW_LOADING_STATE = 'SHOW_LOADING_STATE'
+const CLEAR_DATA = 'CLEAR_DATA';
 ///////////////////////FOR USERS LOGGING IN
 export function getUser(){
     let userData = axios.get('/auth/user').then(res=>res.data);
@@ -32,6 +34,13 @@ export function channelQuery(location,ssid){
 export function showMapState(tOrF){
     return {
         type: SHOW_MAP_STATE,
+        payload: tOrF
+    }
+}
+////////////////////////////////  SHOWLOADING SCREEN
+export function showLoading(tOrF){
+    return {
+        type: SHOW_LOADING_STATE,
         payload: tOrF
     }
 }
@@ -58,6 +67,8 @@ export default function reducer(state = initialState, action){
             return Object.assign({}, state, {mapData: action.payload});
         case SHOW_MAP_STATE : 
             return Object.assign({}, state, {showMap: action.payload});
+        case SHOW_LOADING_STATE : 
+            return Object.assign({}, state, {loading: action.payload});
         case CLEAR_DATA : 
             return Object.assign({}, state, {localChannelData:{},mapData:{}});
         case MAP_SELECT + '_FULFILLED': 

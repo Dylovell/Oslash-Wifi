@@ -1,0 +1,13 @@
+<svg id='Layer_1' xmlns='http://www.w3.org/2000/svg' height='60' width='60'
+viewBox='0 0 60 60'>
+    <line stroke-width='4.5px' stroke='#000' x2='60' y1='10' y2='10' />
+    <line  stroke-width='4.5px' stroke='#000' x1='60' y1='30' y2='30' />
+    <line stroke-width='4.5px' stroke='#000' x2='60' y1='50' y2='50' />
+</svg>
+
+<!-- <svg id='Layer_1' xmlns='http://www.w3.org/2000/svg' height='60' width='60'
+viewBox='0 0 60 60'>
+    <line stroke='#000' stroke-dasharray='60' stroke-dashoffset='60' x2='60' y1='10' y2='10' />
+    <line stroke='#000' stroke-dasharray='60' stroke-dashoffset='60' x1='60' y1='30' y2='30' />
+    <line stroke='#000' stroke-dasharray='60' stroke-dashoffset='50' x2='60' y1='50' y2='50' />
+</svg> --> 
