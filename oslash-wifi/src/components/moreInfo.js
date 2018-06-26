@@ -4,7 +4,10 @@ export default class MoreInfo extends Component {
     render() {
         return (
             <div>
-            More Info
+                <br/>
+                <br/>
+                <br/>
+                More Info
             </div> 
         )
     }

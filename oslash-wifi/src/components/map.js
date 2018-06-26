@@ -53,7 +53,11 @@ class MapComponent extends Component {
     render() {
             return (
                 <div>
+                    <br/>
+                    <br/>
+                    <br/>
                     <div>Select Your Approximate Area</div>
+                    <br/>
                     <this.MyMapComponent
                         isMarkerShown={this.state.isMarkerShown}
                         onMarkerClick={this.handleMarkerClick}

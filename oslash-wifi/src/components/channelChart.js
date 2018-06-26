@@ -36,6 +36,7 @@ class ChannelChart extends Component {
         let data = {
             labels:[],
             datasets: [{
+                color:'white',
                 label: 'Networks per Channel',
                 data: [],
                 borderWidth: 1
@@ -44,12 +45,21 @@ class ChannelChart extends Component {
         let options={
             scales: {
                 yAxes: [{
+                    // gridLines:{
+                    //     color:'#b2b2b2',
+                    // },
                     ticks: {
                         beginAtZero: true
                     }
+                }],
+                xAxes: [{
+                    // gridLines:{
+                    //     color:'#b2b2b2',
+                    // }
                 }]
+                }
             }
-        }
+        
         channelsArray.map((el)=>
                 data.datasets[0].data.push(el[1])
             )
@@ -63,13 +73,13 @@ class ChannelChart extends Component {
         if(this.props.localChannelData.returned === false){
             return(
                <div>
-                   <br/>
                    <p>Fill out the fields above</p>
                 </div>
             )
         }else{
             return(
                 <div>
+                    <br/>
                     2.4GHz Wifi Spectrum
                     <br/>
                     <Line data={this.ChannelDataMapper2GHz()}/>
@@ -77,7 +87,8 @@ class ChannelChart extends Component {
                     5GHz WiFi Spectrum
                     <Bar data={this.ChannelDataMapper5GHz().data} options={this.ChannelDataMapper5GHz().options}/>
                     <br/>
-               
+                    <br/>
+                    <br/>
                 </div>
             )
         }

@@ -48,6 +48,8 @@ class LookUp extends Component {
         if(this.props.showMap===false){
             return (
                 <div className="Lookup">
+                <br/>
+                <br/>
                     <p>LOOK UP</p>
                         <input className='Inputbox' 
                             placeholder={this.state.locationInputPlaceholder} 
@@ -64,7 +66,6 @@ class LookUp extends Component {
                         <br/>
                         <br/>
                         <button className='Button' onClick={()=>{this.submitButton();}}>Find</button>
-                        <br/>
                         <br/>
                         <ChannelChart/>
                 </div> 
