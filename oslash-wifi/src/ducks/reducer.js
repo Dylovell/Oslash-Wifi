@@ -5,14 +5,16 @@ const initialState={
     localChannelData:{returned:false},
     mapData:[],
     showMap:false,
-    loading:false
+    loading:false,
+    nothingFound:false
 }
 
 const GET_USER_DATA = 'GET_USER_DATA';
 const CHANNEL_QUERY  = 'CHANNEL_QUERY';
 const MAP_SELECT = 'MAP_SELECT';
 const SHOW_MAP_STATE = 'SHOW_MAP_STATE';
-const SHOW_LOADING_STATE = 'SHOW_LOADING_STATE'
+const SHOW_LOADING_STATE = 'SHOW_LOADING_STATE';
+const NOTHING_FOUND_STATE = 'NOTHING_FOUND_STATE';
 const CLEAR_DATA = 'CLEAR_DATA';
 ///////////////////////FOR USERS LOGGING IN
 export function getUser(){
@@ -44,6 +46,13 @@ export function showLoading(tOrF){
         payload: tOrF
     }
 }
+////////////////////////////////  NOTHING FOUND SCREEN
+export function showNothingFound(tOrF){
+    return {
+        type: NOTHING_FOUND_STATE,
+        payload: tOrF
+    }
+}
 ////////////////////////////USED TO RESET DATA WHEN USER LEAVES LOOKUP
 export function clearData(){
     return {
@@ -69,6 +78,8 @@ export default function reducer(state = initialState, action){
             return Object.assign({}, state, {showMap: action.payload});
         case SHOW_LOADING_STATE : 
             return Object.assign({}, state, {loading: action.payload});
+        case NOTHING_FOUND_STATE : 
+            return Object.assign({}, state, {nothingFound: action.payload});
         case CLEAR_DATA : 
             return Object.assign({}, state, {localChannelData:{},mapData:{}});
         case MAP_SELECT + '_FULFILLED': 

@@ -5,9 +5,10 @@ export default function About (){
         <div>
             <br/>
             <br/>
-            <br/>
-            <p>ABOUT MEEEEEE</p>
+            <p>ABOUT </p>
             <hr/>
+            <p>Website designed and created by Dylan Lovell</p>
+            <p>in colab w/</p>
         </div>
      )
 }

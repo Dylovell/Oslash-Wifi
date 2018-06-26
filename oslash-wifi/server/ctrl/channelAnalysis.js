@@ -11,8 +11,12 @@ function getLocataion(userReq){
     let formatedLocation = userReq.body.location.replace(/ /g,"+");
     return axios.get('https://maps.googleapis.com/maps/api/geocode/json?address='+formatedLocation+'&key='+GEOCODING_KEY)
     .then((res)=>{
-        let geoLocation = res.data.results[0].geometry.bounds
-        return ssidCitySearch(geoLocation.southwest.lat, geoLocation.northeast.lat, geoLocation.southwest.lng, geoLocation.northeast.lng,userReq.body.ssid)
+        if(res.data.results[0]===undefined){
+            return []
+        }else{
+            let geoLocation = res.data.results[0].geometry.bounds
+            return ssidCitySearch(geoLocation.southwest.lat, geoLocation.northeast.lat, geoLocation.southwest.lng, geoLocation.northeast.lng,userReq.body.ssid)
+        }
     })
 }
 
@@ -124,7 +128,6 @@ module.exports = {
     simpleUserInput: async(req,res) => {
         let returnedList = await getLocataion(req);
         res.status(200).send(returnedList);
-        ///////////////////////////////////CREATE A FIX FOR WHEN NOTHING RETURNS
     },
     areaChannelLookup: async(req,res) => {
         let channelList = await areaChannelRequest(req.body)

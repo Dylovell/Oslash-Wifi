@@ -7,7 +7,7 @@ export default class Footer extends Component {
         return (
             <footer>
                 <div className='Footer'>
-                    <Link to='/about'>about</Link>
+                    <Link to='/about'>about us</Link>
                 </div>
             </footer>
         )

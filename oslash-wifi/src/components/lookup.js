@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import MapComponent from './map'
 import ChannelChart from './channelChart'
-import {channelQuery, mapSelect, showMapState} from '../ducks/reducer'
+import {channelQuery, mapSelect, showMapState, showNothingFound} from '../ducks/reducer'
 
 class LookUp extends Component {
     constructor(){
@@ -40,7 +40,8 @@ class LookUp extends Component {
     // }
 
     takeMeBack(){
-        this.props.showMapState(false)
+        this.props.showMapState(false);
+        this.props.showNothingFound(false);
     }
 
     render() {
@@ -95,8 +96,9 @@ function mapStateToProps(state){
         user: state.user,
         mapData: state.mapData,
         showMap: state.showMap,
-        localChannelData: state.localChannelData
+        localChannelData: state.localChannelData,
+        nothingfound: state.nothingfound
     }
 }
 
-export default connect(mapStateToProps,{channelQuery, showMapState, mapSelect})(LookUp);
+export default connect(mapStateToProps,{channelQuery, showMapState, mapSelect, showNothingFound})(LookUp);

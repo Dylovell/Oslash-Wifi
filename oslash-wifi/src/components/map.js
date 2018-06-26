@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import { compose, withProps } from "recompose";
 import {withScriptjs,withGoogleMap,GoogleMap,Marker} from "react-google-maps";
 
-import {mapSelect, showMapState} from '../ducks/reducer'
+import {mapSelect, showMapState, showNothingFound} from '../ducks/reducer'
+import { stat } from "fs";
 
 
 class MapComponent extends Component {
@@ -27,7 +28,9 @@ class MapComponent extends Component {
 
     mapMiddle = () =>{
         let middleObj = this.props.mapData[Math.round(this.props.mapData.length/2)]
-        return this.setState({mapCenter:{lat:middleObj.trilat, lng:middleObj.trilong}})
+        middleObj === undefined
+        ? this.props.showNothingFound(true)
+        : this.setState({mapCenter:{lat:middleObj.trilat, lng:middleObj.trilong}})
     }
 
     MyMapComponent = compose(
@@ -47,13 +50,14 @@ class MapComponent extends Component {
                     <Marker key={i} position={{ lat:el.trilat, lng:el.trilong }} onClick={()=>{this.handleMarkerClick(el)}}/>
                 )
             })} 
-        </GoogleMap>
+        </GoogleMap> 
     ));
     
     render() {
+        if(this.props.nothingFound===false){
             return (
                 <div>
-                    <br/>
+                    
                     <br/>
                     <br/>
                     <div>Select Your Approximate Area</div>
@@ -64,7 +68,22 @@ class MapComponent extends Component {
                     />
                 </div>
                 )            
+        }else{
+            return(
+                <div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div>    
+                     It Looks like nothing came up
+                    </div> 
+                    <br/>
+                    <p className="MainText">Try being more specific in the location or</p>
+                    <p className="MainText">Make sure you spelled your WiFi name correctly</p>
+                </div> 
+            )
         }
+    }
     
 }
 
@@ -72,8 +91,9 @@ function mapStateToProps(state){
     return{
         user: state.user,
         mapData: state.mapData,
-        showMap: state.showMap
+        showMap: state.showMap,
+        nothingFound: state.nothingFound
     }
 }
 
-export default connect(mapStateToProps,{mapSelect, showMapState})(MapComponent); 
+export default connect(mapStateToProps,{mapSelect, showMapState, showNothingFound})(MapComponent); 
