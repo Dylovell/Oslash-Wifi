@@ -31,15 +31,15 @@ class Header extends Component {
             <img src={menu} alt='Menu' onClick={this.openMenu} className="MenuIcon"/>
             <div id='sideNav' className='NavMenu' style={{width:this.state.width}}>
                 <p>oSlash WiFi</p>
-                <Auth text-align='right' onClick={()=>this.closeMenu()}/>
-                <hr/>
                 <a><Link to='/lookup' onClick={()=>this.closeMenu()}>Find</Link></a>
                 <hr/>
                 <a><Link to='/moreinfo' onClick={()=>this.closeMenu()}>Additional Info</Link></a>
                 <hr/>                
                 <a><Link to='/about' onClick={()=>this.closeMenu()}>About</Link></a>
-                <br/>
-                <button onClick={()=>this.closeMenu()}>Close</button>
+                <hr/>
+                <Auth text-align='right' onClick={()=>this.closeMenu()}/>
+                {/* <br/> */}
+                {/* <button onClick={()=>this.closeMenu()}>Close</button> */}
             </div> 
         </header>
       // </div>

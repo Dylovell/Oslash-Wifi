@@ -11,14 +11,14 @@ export default class Main extends Component {
             <div className="Main">
                 <br/>
                 <br/>
-                <br/>
-                <img alt='Main' src={marble} width='100%'/>
+                
+                <img className='MainPhoto' alt='Main' src={marble} width='100%'/>
                 <div className='Content'>
-                    <Link to='/lookup'>Want Faster WiFi?</Link>
+                    <Link to='/lookup'>Want Faster WiFi</Link>
                     <hr/>
-                    <Link to='/moreinfo'>What are WiFi Channels?</Link>
+                    <Link to='/moreinfo'>What are WiFi Channels</Link>
                     <hr/>
-                    <Link to='/moreinfo'>Change a WiFi Channel?</Link>
+                    <Link to='/moreinfo'>Change a WiFi Channel</Link>
                 </div>
                 <img alt='Main' src={dune} width='100%'/>
                 <div className='Content'>

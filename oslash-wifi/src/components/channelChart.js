@@ -18,6 +18,7 @@ class ChannelChart extends Component {
             labels:[],
             datasets: [{
                 label: 'Networks per Channel',
+                borderColor:['rgba(184, 172, 150, 0.966)'],
                 data: [],
                 borderWidth: 1
             }]
@@ -38,6 +39,8 @@ class ChannelChart extends Component {
             datasets: [{
                 color:'white',
                 label: 'Networks per Channel',
+                borderColor:['rgba(184, 172, 150, 0.966)','rgba(231, 217, 189, 0.966)','rgba(184, 172, 150, 0.966)','rgba(231, 217, 189, 0.966)','rgba(184, 172, 150, 0.966)','rgba(231, 217, 189, 0.966)','rgba(184, 172, 150, 0.966)','rgba(231, 217, 189, 0.966)','rgba(184, 172, 150, 0.966)','rgba(231, 217, 189, 0.966)','rgba(184, 172, 150, 0.966)','rgba(231, 217, 189, 0.966)','rgba(184, 172, 150, 0.966)','rgba(231, 217, 189, 0.966)'],
+                boarderWidth:5,
                 data: [],
                 borderWidth: 1
             }]

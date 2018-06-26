@@ -4,7 +4,7 @@ export default class Auth extends Component {
     render() {
         return (
                 <a href={process.env.REACT_APP_LOGIN}>
-                AUTH
+                User Data
                 </a>  
         )
     }

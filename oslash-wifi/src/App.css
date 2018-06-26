@@ -3,10 +3,14 @@
 .App{
   text-align: center;
   font-family: 'Montserrat';
-  background: rgb(48, 48, 48);
+  background: fixed rgb(48, 48, 48);
   height: fit-content;
+  width: fill;
   color: rgb(226, 219, 206);
+  font-size: 22px;
+  font-weight: 500;
 }
+
 .Header {
   position: fixed;
   height: 60px;
@@ -52,6 +56,26 @@
   font-size: 18px;
   padding-right:7px;
 }
+.Logo {
+  flex-grow: 0;
+  height: 60px;
+}
+.MenuIcon{
+  width: 60px;
+  height: 60px;
+  margin-top: 9px;
+  margin-right: 8px;
+  height: 40px; 
+}
+.MenuIconlines{
+  color: white;
+}
+
+
+body{
+  background:rgb(48, 48, 48);
+  min-height: 100vh;
+}
 hr{
   height: 2px;
   width: 200px;
@@ -70,22 +94,7 @@ hr{
     width: 200px;
   }
 }
-.Logo {
-  flex-grow: 0;
-  height: 60px;
-}
-.MenuIcon{
-  width: 60px;
-  height: 60px;
-  margin-top: 9px;
-  margin-right: 8px;
-  height: 40px; 
-}
-.MenuIconlines{
-  color: white;
-}
 .Content{
-  /* background: rgb(73, 73, 73); */
   padding: 15px;
   margin: 15px 13px;
   text-align: left;
@@ -102,16 +111,38 @@ hr{
   color: rgb(224, 215, 198);
   text-decoration: none;
 }
+.MainPhoto{
+  margin-top: 10px;
+}
 .Inputbox{
   width: 200px;
   height: 30px;
   padding-left: 10px;
-  border: lightslategrey 1px;
+  border: none;
   background: rgb(19, 19, 19);
-  color:rgb(224, 215, 198);
+  color:rgb(184, 172, 150);
 }
-.Button{
+button{
+  background: rgb(19, 19, 19);
+  color: rgb(136, 136, 136);
+  border: none;
+  border-radius: 2px;
+  padding: 5px 8px;
+}
+.Userpic{
+  height:40px; 
+  border-radius:40px
+}
 
+
+footer{
+  bottom: 0;
+  margin-bottom: 10px;
+}
+.Footer a{
+  font-size: 20px;
+  color: #838383;
+  text-decoration: none;
 }
 
 
