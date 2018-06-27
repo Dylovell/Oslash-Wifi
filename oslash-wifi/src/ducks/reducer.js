@@ -6,7 +6,8 @@ const initialState={
     mapData:[],
     showMap:false,
     loading:false,
-    nothingFound:false
+    nothingFound:false,
+    comments:[],
 }
 
 const GET_USER_DATA = 'GET_USER_DATA';
@@ -16,6 +17,8 @@ const SHOW_MAP_STATE = 'SHOW_MAP_STATE';
 const SHOW_LOADING_STATE = 'SHOW_LOADING_STATE';
 const NOTHING_FOUND_STATE = 'NOTHING_FOUND_STATE';
 const CLEAR_DATA = 'CLEAR_DATA';
+const USER_COMMENTS = 'USER_COMMENTS';
+
 ///////////////////////FOR USERS LOGGING IN
 export function getUser(){
     let userData = axios.get('/auth/user').then(res=>res.data);
@@ -67,6 +70,14 @@ export function mapSelect(netid){
         payload: mapdDataSelection
     }
 }
+/////////////////////////////////////////USER SUBMITS A COMMENT
+export function editUserComment(comment){
+    let userData = axios.put('/api/submitcomment', ({comment:comment})).then(res=>res.data);
+    return{
+        type:USER_COMMENTS,
+        payload: userData
+    }
+}
 
 export default function reducer(state = initialState, action){
     switch (action.type) {
@@ -84,6 +95,8 @@ export default function reducer(state = initialState, action){
             return Object.assign({}, state, {localChannelData:{},mapData:{}});
         case MAP_SELECT + '_FULFILLED': 
             return Object.assign({}, state, {localChannelData: action.payload});
+        case USER_COMMENTS + '_FULFILLED': 
+            return Object.assign({}, state, {comments: action.payload});
         default:
             return state;
     }

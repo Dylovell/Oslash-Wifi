@@ -89,10 +89,10 @@ function deDupLocation(res){
 }
 
 function areaChannelRequest(obj){
-    let lat1 = obj.trilat -.002,
-        lat2 = obj.trilat +.002,
-        long1 = obj.trilong -.002,
-        long2 = obj.trilong +.002
+    let lat1 = obj.trilat -.004,
+        lat2 = obj.trilat +.004,
+        long1 = obj.trilong -.004,
+        long2 = obj.trilong +.004
     let wigleData = {
         //Referance URL with QOS set to 6 and variance set to .001
         //https://api.wigle.net/api/v2/network/search?onlymine=false&latrange1=40.22389493&latrange2=40.227894930000005&longrange1=-111.66332355&longrange2=-111.65932355000001&lastupdt=20170101&freenet=false&paynet=false&minQoS=6&variance=0.001
@@ -126,6 +126,7 @@ function channelCounter(res){
 
 module.exports = {
     simpleUserInput: async(req,res) => {
+        
         let returnedList = await getLocataion(req);
         res.status(200).send(returnedList);
     },
@@ -133,5 +134,14 @@ module.exports = {
         let channelList = await areaChannelRequest(req.body)
         res.status(200).send(channelList)
     },
-    
+    addComment: (req,res) => {
+        const db = get('db')
+
+        db.create_post(req.body.comment, req.user.id)
+        .then(
+            res.status(200).send(req.user)
+        ).catch(
+            res.status(500)
+        )
+    }
 }

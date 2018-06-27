@@ -7,9 +7,9 @@ CREATE TABLE channel (
 INSERT INTO channel
 (channel, frequecy)
 VALUES
-(1,'2.4GHz'),(2,'2.4GHz'),(3,'2.4GHz'),(4,'2.4GHz'),(5,'2.4GHz'),(6,'2.4GHz'),(7,'2.4GHz'),(8,'2.4GHz'),(9,'2.4GHz'),(10,'2.4GHz'),(11,'2.4GHz'),(12,'2.4GHz'),(13,'2.4GHz'),
-(36,'5GHz nonDFS'),(38,'5GHz nonDFS'),(40,'5GHz nonDFS'),(42,'5GHz nonDFS'),(44,'5GHz nonDFS'),(46,'5GHz nonDFS'),(48,'5GHz nonDFS')  ,(149'5GHz nonDFS'),(151'5GHz nonDFS'),
-(153,'5GHz nonDFS'),(155,'5GHz nonDFS'),(157,'5GHz nonDFS'),(159,'5GHz nonDFS'),(161,'5GHz nonDFS'),(165,'5GHz nonDFS')
+(1,2),(2,2),(3,2),(4,2),(5,2),(6,2),(7,2),(8,2),(9,2),(10,2),(11,2),(12,2),(13,2),
+(36,5),(38,5),(40,5),(42,5),(44,5),(46,5),(48,5),(149,5),(151,5),
+(153,5),(155,5),(157,5),(159,5),(161,5),(165,5)
 
 
 
