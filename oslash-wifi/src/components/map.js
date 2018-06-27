@@ -4,7 +4,7 @@ import { compose, withProps } from "recompose";
 import {withScriptjs,withGoogleMap,GoogleMap,Marker} from "react-google-maps";
 
 import {mapSelect, showMapState, showNothingFound} from '../ducks/reducer'
-import { stat } from "fs";
+
 
 
 class MapComponent extends Component {

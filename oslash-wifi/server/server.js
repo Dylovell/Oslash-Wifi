@@ -85,7 +85,11 @@ app.get('/auth/user', (req,res)=>{
 
 app.post('/api/areaquery', channelAnalysis.simpleUserInput)
 app.post('/api/mapselect', channelAnalysis.areaChannelLookup)
-app.put('/api/submitcomment', channelAnalysis.addComment)
+
+app.get('/api/allcomments', channelAnalysis.allComments)
+app.post('/api/submitcomment', channelAnalysis.addComment)
+app.put('/api/edit/:id', channelAnalysis.editCommnet)
+app.delete('/api/delete/:id', channelAnalysis.deleteComment)
 
 app.listen(SERVER_PORT, ()=>{console.log('Connected on port',SERVER_PORT)})
 

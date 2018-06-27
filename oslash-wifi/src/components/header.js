@@ -31,13 +31,13 @@ class Header extends Component {
             <img src={menu} alt='Menu' onClick={this.openMenu} className="MenuIcon"/>
             <div id='sideNav' className='NavMenu' style={{width:this.state.width}}>
                 <p>oSlash WiFi</p>
-                <a><Link to='/lookup' onClick={()=>this.closeMenu()}>Find</Link></a>
+                <Link className='NavName' to='/lookup' onClick={()=>this.closeMenu()}>Find</Link>
                 <hr/>
-                <a><Link to='/moreinfo' onClick={()=>this.closeMenu()}>Additional Info</Link></a>
+                <Link className='NavName' to='/moreinfo' onClick={()=>this.closeMenu()}>Additional Info</Link>
                 <hr/>                
-                <a><Link to='/about' onClick={()=>this.closeMenu()}>About</Link></a>
+                <Link className='NavName' to='/about' onClick={()=>this.closeMenu()}>About</Link>
                 <hr/>
-                <Auth text-align='right' onClick={()=>this.closeMenu()}/>
+                <Auth className='NavName' text-align='right' onClick={()=>this.closeMenu()}/>
                 {/* <br/> */}
                 {/* <button onClick={()=>this.closeMenu()}>Close</button> */}
             </div> 

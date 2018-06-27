@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import '../App.css';
+import {Link} from 'react-router-dom'
 
 import {getUser} from './../ducks/reducer'; 
 
@@ -16,7 +17,9 @@ class User extends Component {
                 <br/>
                 <br/>
                 <p>Hello {this.props.user.user_name}</p>
-                <img className='Userpic' src={this.props.user.picture}/>
+                <img className='Userpic' src={this.props.user.picture} alt=''/>
+                <br/>
+                <Link className='NavName' to='/forum'>go to Forum--> </Link>
             </div> 
         )
     }

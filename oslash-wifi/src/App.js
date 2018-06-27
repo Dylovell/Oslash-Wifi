@@ -7,12 +7,10 @@ import router from './router'
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div className='App'>
         <Header className="App"/>
-        <body className="App">
         {router}
-        </body>
-        <Footer className="App"/>
+        <Footer/>
       </div>
     );
   }

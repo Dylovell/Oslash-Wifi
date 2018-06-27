@@ -134,14 +134,29 @@ module.exports = {
         let channelList = await areaChannelRequest(req.body)
         res.status(200).send(channelList)
     },
-    addComment: (req,res) => {
-        const db = get('db')
+    allComments: (req,res)=>{
+        const db = req.app.get('db');
 
+        db.all_comments().then(comments=>res.status(200).send(comments))
+    },
+    addComment: (req,res) => {
+        const db = req.app.get('db');
+        
         db.create_post(req.body.comment, req.user.id)
-        .then(
-            res.status(200).send(req.user)
-        ).catch(
-            res.status(500)
-        )
+        .then(comments=>res.status(200).send(comments))
+        .catch(res.status(500))
+    },
+    deleteComment: (req,res) => {
+        const db = req.app.get('db');
+        console.log(req.params.id)
+        db.delete_comment(req.params.id)
+        .then(res.status(200))
+    },
+    editCommnet: (req,res) => {
+        const db = req.app.get('db');
+
+        db.edit_comment(req.params.id,req.body.comment)
+        .then(res.status(200))
     }
+
 }
