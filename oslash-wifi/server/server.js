@@ -19,7 +19,7 @@ const {
 } =  process.env;
 
 const app = express();
-app.use(express.static(_dirname + `${__dirname}/../build`))
+app.use(express.static(`${__dirname}/../build`))
 app.use(bodyParser.json())
 
 massive(CONNECTION_STRING).then(db =>{app.set('db',db)} )
