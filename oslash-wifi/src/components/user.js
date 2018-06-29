@@ -19,7 +19,7 @@ class User extends Component {
                 <p>Hello {this.props.user.user_name}</p>
                 <img className='Userpic' src={this.props.user.picture} alt=''/>
                 <br/>
-                <Link className='NavName' to='/forum'>go to Forum--> </Link>
+                <Link className='NavName' to='/forum'>Personal Notes--> </Link>
             </div> 
         )
     }

@@ -27,7 +27,6 @@ export default class Forum extends Component {
             </div>
         )
     }
-
     submitComment(){
         Axios.post('/api/submitcomment', {comment:this.state.commentInput})
             .then(this.setState({commentInput:''}))
@@ -65,7 +64,7 @@ export default class Forum extends Component {
             <div>
                 <br/>
                 <br/>
-                <div>Welcome to the forums....</div>
+                <div>Your notes!</div>
                 <hr/>
                 {comment}
                 <hr/>

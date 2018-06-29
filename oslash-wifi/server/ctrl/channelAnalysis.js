@@ -137,7 +137,7 @@ module.exports = {
     allComments: (req,res)=>{
         const db = req.app.get('db');
 
-        db.all_comments().then(comments=>res.status(200).send(comments))
+        db.all_comments(req.user.id).then(comments=>res.status(200).send(comments))
     },
     addComment: (req,res) => {
         const db = req.app.get('db');
@@ -148,7 +148,7 @@ module.exports = {
     },
     deleteComment: (req,res) => {
         const db = req.app.get('db');
-        console.log(req.params.id)
+   
         db.delete_comment(req.params.id)
         .then(res.status(200))
     },
