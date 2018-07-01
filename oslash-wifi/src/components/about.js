@@ -7,8 +7,10 @@ export default function About (){
             <br/>
             <p>ABOUT </p>
             <hr/>
-            <p>Website designed and created by Dylan Lovell</p>
-            <p>in colab w/</p>
+            <p>Website Created by</p>
+            <a href='https://dylanlovell.com'>Dylan Lovell</a>
+            <br/>
+            <div className='Space'/>
         </div>
      )
 }

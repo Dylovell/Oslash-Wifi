@@ -37,7 +37,6 @@
   right: 0;
   background-color: rgba(48, 48, 48, 0.911); 
   overflow-x: hidden;
-  /* padding-top: 60px;  */
   transition: 0.2s; 
   text-align: left;
 }
@@ -133,7 +132,15 @@ button{
   height:40px; 
   border-radius:40px
 }
-
+a{
+  color: rgb(226, 219, 206);
+  font-size: 22px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.Space{
+  height: 67vh;
+}
 
 footer{
   bottom: 0;

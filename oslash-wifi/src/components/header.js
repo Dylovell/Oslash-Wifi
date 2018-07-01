@@ -35,9 +35,9 @@ class Header extends Component {
                 <hr/>
                 <Link className='NavName' to='/moreinfo' onClick={()=>this.closeMenu()}>Additional Info</Link>
                 <hr/>                
-                <Link className='NavName' to='/about' onClick={()=>this.closeMenu()}>About</Link>
-                <hr/>
                 <Auth className='NavName' text-align='right' onClick={()=>this.closeMenu()}/>
+                <hr/>
+                <Link className='NavName' to='/about' onClick={()=>this.closeMenu()}>About</Link>
                 {/* <br/> */}
                 {/* <button onClick={()=>this.closeMenu()}>Close</button> */}
             </div> 
