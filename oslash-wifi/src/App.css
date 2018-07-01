@@ -112,6 +112,21 @@ hr{
 .MainPhoto{
   margin-top: 10px;
 }
+.Info{
+  color: #a8a8a8;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.Info .Title{
+  color: rgb(224, 215, 198);
+  font-size: 22px;
+  margin-top: 20px;
+}
+.Info a{
+  font-size: 14px;
+  text-decoration: underline; 
+}
 .Inputbox{
   width: 200px;
   height: 30px;
@@ -140,6 +155,9 @@ a{
 }
 .Space{
   height: 67vh;
+}
+.Smallspace{
+  height: 27vh;
 }
 
 footer{
